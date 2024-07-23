@@ -23,6 +23,7 @@ services:
       - "8080:8080"
     volumes:
       - ./dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
     command: webserver
 
   scheduler:
@@ -35,7 +36,9 @@ services:
       - postgres
     volumes:
       - ./dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
     command: scheduler
 
 volumes:
   postgres_data:
+  airflow_logs:
